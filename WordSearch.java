@@ -29,7 +29,7 @@ public class WordSearch{
       for ( int i=0; i< data.length; i++) {
         for ( int x=0; x< data[i].length; x++) {
           if ( x == data[i].length -1)
-          output += data[i][x] + "/n";
+          output += data[i][x] + "\n";
           else
           output += data[i][x] + " ";
         }
