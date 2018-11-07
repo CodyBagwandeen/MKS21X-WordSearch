@@ -13,7 +13,7 @@ public class WordSearch{
     /**Set all values in the WordSearch to underscores'_'*/
     private void clear(){
       for ( int i=0; i< data.length; i++) {
-        for ( int x=0; x< data[i].length; i++) {
+        for ( int x=0; x< data[i].length; x++) {
           data[i][x] = '_' ;
         }
       }
@@ -24,6 +24,16 @@ public class WordSearch{
      *separated by newlines.
      */
     public String toString(){
+      String output = "";
+      for ( int i=0; i< data.length; i++) {
+        for ( int x=0; x< data[i].length; x++) {
+          if ( x == data[i].length -1)
+          output += data[i][x] + "/n";
+          else
+          output += data[i][x] + " ";
+        }
+      }
+      return output;
     }
 
 
@@ -39,6 +49,7 @@ public class WordSearch{
      * and the board is NOT modified.
      */
     public boolean addWordHorizontal(String word,int row, int col){
+      
     }
 
    /**Attempts to add a given word to the specified position of the WordGrid.
