@@ -8,6 +8,7 @@ public class WordSearch{
      */
     public WordSearch(int rows,int cols){
       data = new char[rows][cols];
+      clear();
     }
 
     /**Set all values in the WordSearch to underscores'_'*/
@@ -49,7 +50,16 @@ public class WordSearch{
      * and the board is NOT modified.
      */
     public boolean addWordHorizontal(String word,int row, int col){
-      
+      if ( data[row].length < word.length() + row )
+      return false;
+      for ( int i = row; i < row + word.length(); i++){
+        if ( ( data[row][i] == '_') || ( word.charAt(i) == data[row][i]))
+        return false;
+      }
+      for ( int i = row; i < row + word.length(); i++) {
+        data[row][i] = word.charAt(i);
+      }
+      return true;
     }
 
    /**Attempts to add a given word to the specified position of the WordGrid.
