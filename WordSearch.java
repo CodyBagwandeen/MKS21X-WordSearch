@@ -76,12 +76,12 @@ public class WordSearch{
     public boolean addWordVertical(String word,int row, int col){
       if ( data.length < word.length() + row)
       return false;
-      for ( int i = col; i < col + word.length(); i++) {
-        if ( !(data[i][col] == '_') && !(word.charAt(i) == data[i][col]) )
+      for ( int i = 0; i < word.length(); i++) {
+        if ( !(data[row + i][col] == '_') && !(word.charAt(i) == data[row +i][col]) )
         return false;
       }
-      for ( int i = col; i < col + word.length(); i++) {
-        data[i][col] = word.charAt(i);
+      for ( int i = 0; i < word.length(); i++) {
+        data[row +i][col] = word.charAt(i);
       }
       return true;
     }
