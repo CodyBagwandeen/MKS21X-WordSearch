@@ -131,7 +131,7 @@ public class WordSearch{
        public boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
          if ( rowIncrement == 0 && colIncrement == 0 )
          return false;
-         if ( (  ) || ( ) )
+         if ( ( data.length < row + word.length()) || ( data[row].length < col + word.length() ))
           return false;
          for ( int i = 0 ; i < word.length(); i++) {
            if ( !(data[row + i * rowIncrement][col+ i * colIncrement] == '_') && !(word.charAt(i) == data[row + i * rowIncrement][col+ i * colIncrement]) )
