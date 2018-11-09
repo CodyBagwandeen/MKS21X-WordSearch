@@ -1,5 +1,12 @@
+import java.util.*; //random, scanner, arraylist
+import java.io.*; //file, filenotfoundexception
+
 public class WordSearch{
     private char[][]data;
+    private int seed;
+    private Random randgen;
+    private ArrayList<String>wordsToAdd;
+    private ArrayList<String>wordsAdded;
 
     /**Initialize the grid to the size specified
      *and fill all of the positions with '_'
@@ -108,6 +115,37 @@ public class WordSearch{
      }
      return true;
    }
-
-  
+   /**Attempts to add a given word to the specified position of the WordGrid.
+        *The word is added in the direction rowIncrement,colIncrement
+        *Words must have a corresponding letter to match any letters that it overlaps.
+        *
+        *@param word is any text to be added to the word grid.
+        *@param row is the vertical locaiton of where you want the word to start.
+        *@param col is the horizontal location of where you want the word to start.
+        *@param rowIncrement is -1,0, or 1 and represents the displacement of each letter in the row direction
+        *@param colIncrement is -1,0, or 1 and represents the displacement of each letter in the col direction
+        *@return true when: the word is added successfully.
+        *        false when: the word doesn't fit, OR  rowchange and colchange are both 0,
+        *        OR there are overlapping letters that do not match
+        */
+       public boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
+         if ( data.length < word.length() + row)
+          if ( colIncrement != 0)
+          return false;
+         if ( data[row].length < word.length() + col)
+          if( rowIncrement != 0)
+          return false;
+         for ( int i = 0 ; i < word.length(); i++) {
+           if ( !(data[row + rowIncrement][col+colIncrement] == '_') && !(word.charAt(i) == data[row +rowIncrement][col+colIncrement]) )
+           return false;
+         }
+         for ( int i = 0; i < word.length(); i++) {
+           data[row +rowIncrement][col+colIncrement] = word.charAt(i);
+         }
+        return true;
+      }
+      /*[rowIncrement,colIncrement] examples:
+       *[-1,1] would add up to the right because (row -1 each time, col + 1 each time)
+       *[1,0] would add to the right because (row+1), with no col change
+       */
 }
