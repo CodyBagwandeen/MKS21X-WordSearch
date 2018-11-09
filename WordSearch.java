@@ -97,14 +97,14 @@ public class WordSearch{
     *or there are overlapping letters that do not match, then false is returned.
     */
    public boolean addWordDiagonal(String word,int row, int col){
-     if ( data.length < word.length() + row && data[row].length < word.length() + col)
+     if ( (data.length < word.length() + row) || (data[row].length < word.length() + col))
      return false;
      for ( int i = 0 ; i < word.length(); i++) {
        if ( !(data[row + i][col+i] == '_') && !(word.charAt(i) == data[row +i][col+i]) )
        return false;
      }
      for ( int i = 0; i < word.length(); i++) {
-       data[row +i][col+1] = word.charAt(i);
+       data[row +i][col+i] = word.charAt(i);
      }
      return true;
    }
