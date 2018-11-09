@@ -129,18 +129,16 @@ public class WordSearch{
         *        OR there are overlapping letters that do not match
         */
        public boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
-         if ( data.length < word.length() + row)
-          if ( colIncrement != 0)
-          return false;
-         if ( data[row].length < word.length() + col)
-          if( rowIncrement != 0)
+         if ( rowIncrement == 0 && colIncrement == 0 )
+         return false;
+         if ( (  ) || ( ) )
           return false;
          for ( int i = 0 ; i < word.length(); i++) {
-           if ( !(data[row + rowIncrement][col+colIncrement] == '_') && !(word.charAt(i) == data[row +rowIncrement][col+colIncrement]) )
+           if ( !(data[row + i * rowIncrement][col+ i * colIncrement] == '_') && !(word.charAt(i) == data[row + i * rowIncrement][col+ i * colIncrement]) )
            return false;
          }
          for ( int i = 0; i < word.length(); i++) {
-           data[row +rowIncrement][col+colIncrement] = word.charAt(i);
+           data[row + rowIncrement * i][col + colIncrement * i] = word.charAt(i);
          }
         return true;
       }
