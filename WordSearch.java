@@ -19,6 +19,7 @@ public class WordSearch{
     }
 
     public WordSearch( int rows, int cols, String fileName) {
+      randgen = new Random();
       data = new char[rows][cols];
       try{
         File f = new File(fileName);//can combine
@@ -28,8 +29,13 @@ public class WordSearch{
           wordsToAdd.add( in.next());
         }
         for ( int i = 0; i < wordsToAdd.size(); i++) {
+          String word = wordsToAdd.get( randgen.nextInt() % wordsToAdd.size());
           for ( int x = 0; x < 1000; x++) {
-            //if ( addWord())
+            if ( addWord( word, randgen.nextInt() % rows , randgen.nextInt() % cols, randgen.nextInt() % 3 - 1, randgen.nextInt() % 3 - 1)) {
+              x = 1000;
+              wordsAdded.add(word);
+              wordsToAdd.remove(word);
+            }
           }
         }
 
