@@ -20,17 +20,17 @@ public class WordSearch{
 
     public WordSearch( int rows, int cols, String fileName) {
       randgen = new Random();
+      ArrayList<String>wordsToAdd = new ArrayList<String>();
       data = new char[rows][cols];
       try{
         File f = new File(fileName);//can combine
         Scanner in = new Scanner(f);//into one line
-
-        while (in.hasNext()) {
+        while ( in.hasNext()) {
           wordsToAdd.add( in.next());
         }
         for ( int i = 0; i < wordsToAdd.size(); i++) {
           String word = wordsToAdd.get( randgen.nextInt() % wordsToAdd.size());
-          for ( int x = 0; x < 1000; x++) {
+          for ( int x = 0; x < 100; x++) {
             if ( addWord( word, randgen.nextInt() % rows , randgen.nextInt() % cols, randgen.nextInt() % 3 - 1, randgen.nextInt() % 3 - 1)) {
               x = 1000;
               wordsAdded.add(word);
@@ -167,6 +167,7 @@ public class WordSearch{
        public boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
          if ( rowIncrement == 0 && colIncrement == 0 )
          return false;
+
          if ( ( data.length < row + word.length()) || ( data[row].length < col + word.length() ))
           return false;
          for ( int i = 0 ; i < word.length(); i++) {
