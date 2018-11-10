@@ -68,6 +68,9 @@ public class WordSearch{
           output += "| \n";
         }
       }
+      for ( int i= 0; i < wordsAdded.size(); i++) {
+        output += wordsAdded.get(i);
+      }
       return output;
     }
 
