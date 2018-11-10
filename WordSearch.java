@@ -18,6 +18,31 @@ public class WordSearch{
       clear();
     }
 
+    public WordSearch( int rows, int cols, String fileName) {
+      data = new char[rows][cols];
+      try{
+        File f = new File(fileName);//can combine
+        Scanner in = new Scanner(f);//into one line
+
+        while (in.hasNext()) {
+          wordsToAdd.add( in.next());
+        }
+        for ( int i = 0; i < wordsToAdd.size(); i++) {
+          for ( int x = 0; x < 1000; x++) {
+            //if ( addWord())
+          }
+        }
+
+    }catch(FileNotFoundException e){
+      System.out.println("File not found: " + fileName);
+      //e.printStackTrace();
+      System.exit(1);
+      }
+
+    }
+
+
+
     /**Set all values in the WordSearch to underscores'_'*/
     private void clear(){
       for ( int i=0; i< data.length; i++) {
@@ -34,11 +59,13 @@ public class WordSearch{
     public String toString(){
       String output = "";
       for ( int i=0; i< data.length; i++) {
-        for ( int x=0; x< data[i].length; x++) {
-          if ( x == data[i].length -1)
-          output += data[i][x] + "\n";
-          else
-          output += data[i][x] + " ";
+        for ( int x=-1; x < data[i].length + 1; x++) {
+          if ( x == -1)
+          output += "|";
+          if ( x != -1 && x < data[i].length)
+          output += data[i][x];
+          if ( x == data[i].length)
+          output += "| \n";
         }
       }
       return output;
