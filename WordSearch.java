@@ -69,6 +69,7 @@ public class WordSearch{
         //System.out.println(wordsToAdd);
 
         addAllWords();
+        fill();
         System.out.println("This is your seed: " + seed);
 
     }catch(FileNotFoundException e){
@@ -222,7 +223,7 @@ public class WordSearch{
        *[1,0] would add to the right because (row+1), with no col change
        */
 
-       public void addAllWords() {
+       private  void addAllWords() {
         //System.out.print( wordsToAdd );
 
         while( wordsToAdd.size() > 0) {
@@ -242,4 +243,13 @@ public class WordSearch{
           }
         }
        }
+      public void fill() {
+        for ( int rows = 0; rows < data.length; rows++) {
+          for ( int cols = 0; cols < data[rows].length; cols++) {
+            if( data[rows][cols] == '_') {
+              data[rows][cols] = (char)( Math.abs(randgen.nextInt()) % 26 + 65);
+            }
+          }
+        }
+      }
 }
