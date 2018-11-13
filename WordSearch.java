@@ -97,7 +97,7 @@ public class WordSearch{
           if ( x == -1)
           output += "|";
           if ( x != -1 && x < data[i].length)
-          output += data[i][x];
+          output += data[i][x] + " ";
           if ( x == data[i].length)
           output += "| \n";
         }
