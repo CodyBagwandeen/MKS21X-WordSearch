@@ -230,15 +230,15 @@ public class WordSearch{
           //System.out.println(wordsToAdd);
           //System.out.println(wordsToAdd.size());
           String word = wordsToAdd.get( Math.abs( randgen.nextInt() % wordsToAdd.size() ) );
-          for ( int attemps = 0; attemps < 25; attemps++) {
+          for ( int attemps = 0; attemps < 250; attemps++) {
             int rows = Math.abs(randgen.nextInt() % data.length);
             int cols = Math.abs(randgen.nextInt() % data[0].length);
             if ( addWord(word, rows, cols, randgen.nextInt() % 2, randgen.nextInt() % 2 )){
-              attemps = 25;
+              attemps = 250;
               wordsToAdd.remove(word);
               wordsAdded.add(word);
             }
-            if( attemps == 24)
+            if( attemps == 249)
             wordsToAdd.remove(word);
           }
         }
@@ -258,32 +258,44 @@ public class WordSearch{
           System.out.println( Wse);
         }
         if ( args.length > 0 && args.length < 3)
-        System.out.println("Bat formatting; java WordSearch rows cols filename [seed and key]optional");
+        System.out.println("Bat formatting; java Driver [rows cols filename [randomSeed [answers]]], square brackets denotes optional");
         if ( args.length == 3) {
-          int rows = Integer.parseInt( args[0]);
-          int cols = Integer.parseInt( args[1]);
-          String filename = args[2];
-          WordSearch WSe = new WordSearch( rows, cols, filename);
-          System.out.println( WSe);
+          try {
+            int rows = Integer.parseInt( args[0]);
+            int cols = Integer.parseInt( args[1]);
+            String filename = args[2];
+            WordSearch WSe = new WordSearch( rows, cols, filename);
+            System.out.println( WSe);
+          } catch( NumberFormatException e) {
+            System.out.println("Parameters rows and cols must be numbers");
+          }
         }
         if ( args.length == 4) {
-          int rows = Integer.parseInt( args[0]);
-          int cols = Integer.parseInt( args[1]);
-          String filename = args[2];
-          int seed = Integer.parseInt( args[3]);
-          WordSearch WSe = new WordSearch( rows, cols, filename, seed);
-          WSe.fill();
-          System.out.println( WSe);
+          try{
+            int rows = Integer.parseInt( args[0]);
+            int cols = Integer.parseInt( args[1]);
+            String filename = args[2];
+            int seed = Integer.parseInt( args[3]);
+            WordSearch WSe = new WordSearch( rows, cols, filename, seed);
+            WSe.fill();
+            System.out.println( WSe);
+          } catch( NumberFormatException e) {
+            System.out.println("Parameters rows, cols, and seed must be numbers");
+          }
         }
         if ( args.length == 5) {
-          int rows = Integer.parseInt( args[0]);
-          int cols = Integer.parseInt( args[1]);
-          String filename = args[2];
-          int seed = Integer.parseInt( args[3]);
-          WordSearch WSe = new WordSearch( rows, cols, filename, seed);
-          if (!( args[4].equals("key")))
-          WSe.fill();
-          System.out.println( WSe);
+          try {
+            int rows = Integer.parseInt( args[0]);
+            int cols = Integer.parseInt( args[1]);
+            String filename = args[2];
+            int seed = Integer.parseInt( args[3]);
+            WordSearch WSe = new WordSearch( rows, cols, filename, seed);
+            if (!( args[4].equals("key")))
+            WSe.fill();
+            System.out.println( WSe);
+            }catch( NumberFormatException e) {
+              System.out.println("Parameters rows,cols,and seed must be numbers");
+            }
+          }
         }
-      }
 }
