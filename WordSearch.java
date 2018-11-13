@@ -233,6 +233,8 @@ public class WordSearch{
               wordsToAdd.remove(word);
               wordsAdded.add(word);
             }
+            if( attemps == 24)
+            wordsToAdd.remove(word);
           }
         }
        }
