@@ -37,6 +37,7 @@ public class WordSearch{
         //System.out.println(wordsToAdd);
 
         addAllWords();
+        System.out.println("This is your seed: " + randSeed);
 
     }catch(FileNotFoundException e){
       System.out.println("File not found: " + fileName);
@@ -47,7 +48,9 @@ public class WordSearch{
     }
 
     public WordSearch( int rows, int cols, String fileName) {
-      randgen = new Random();
+      Random seeded = new Random() ;
+      int seed = seeded.nextInt() % 100000;
+      randgen = new Random(seed);
       data = new char[rows][cols];
       clear();
       wordsToAdd = new ArrayList<>();
@@ -66,6 +69,7 @@ public class WordSearch{
         //System.out.println(wordsToAdd);
 
         addAllWords();
+        System.out.println("This is your seed: " + seed);
 
     }catch(FileNotFoundException e){
       System.out.println("File not found: " + fileName);
