@@ -5,6 +5,7 @@ public class driver {
       int cols = Integer.parseInt( args[1]);
       String filename = args[2];
       WordSearch WSe = new WordSearch( rows, cols, filename);
+      System.out.println( WSe);
     }
     if ( args.length == 4) {
       int rows = Integer.parseInt( args[0]);
@@ -12,6 +13,7 @@ public class driver {
       String filename = args[2];
       int seed = Integer.parseInt( args[3]);
       WordSearch WSe = new WordSearch( rows, cols, filename, seed);
+      System.out.println( WSe);
     }
   }
 }
