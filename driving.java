@@ -1,7 +1,7 @@
 public class driving{
   public static void main( String[] args) {
 
-    WordSearch WSe = new WordSearch( 10, 24, "words.txt");
+    WordSearch WSe = new WordSearch( 10, 14, "words.txt");
     System.out.println(WSe);
     /*
       |_ _ _ _ _ _ _ _ _ _ _ _ _ _|
@@ -16,7 +16,7 @@ public class driving{
       |_ _ _ _ _ _ _ _ _ _ _ _ _ _|
     */
 
-    WSe.addAllWords();
-    System.out.println(WSe);
+    WordSearch WSe2 = new WordSearch( 10, 14, "words.txt", 50);
+    System.out.println(WSe2);
     }
   }
