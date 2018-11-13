@@ -257,6 +257,8 @@ public class WordSearch{
           WordSearch Wse = new WordSearch( 6, 6, "words.txt");
           System.out.println( Wse);
         }
+        if ( args.length > 0 && args.length < 3)
+        System.out.println("Bat formatting; java WordSearch rows cols filename [seed and key]optional");
         if ( args.length == 3) {
           int rows = Integer.parseInt( args[0]);
           int cols = Integer.parseInt( args[1]);
