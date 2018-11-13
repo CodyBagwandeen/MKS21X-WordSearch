@@ -34,9 +34,9 @@ public class WordSearch{
           //System.out.println(wordsToAdd);
           //System.out.println(wordsToAdd.size());
         }
-        System.out.println(wordsToAdd);
+        //System.out.println(wordsToAdd);
 
-        //addAllWords();
+        addAllWords();
 
     }catch(FileNotFoundException e){
       System.out.println("File not found: " + fileName);
@@ -189,7 +189,7 @@ public class WordSearch{
        */
 
        public void addAllWords() {
-        System.out.print( wordsToAdd );
+        //System.out.print( wordsToAdd );
 
         while( wordsToAdd.size() > 0) {
           //System.out.println(wordsToAdd);
