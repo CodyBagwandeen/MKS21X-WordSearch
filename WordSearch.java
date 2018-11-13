@@ -17,13 +17,42 @@ public class WordSearch{
       data = new char[rows][cols];
       clear();
     }
+    public WordSearch( int rows, int cols, String fileName,int randSeed) {
+      randgen = new Random(randSeed);
+      data = new char[rows][cols];
+      clear();
+      wordsToAdd = new ArrayList<>();
+      wordsAdded = new ArrayList<>();
+
+      try{
+        File f = new File(fileName);//can combine
+        Scanner in = new Scanner(f);//into one line
+        while ( in.hasNext()) {
+          String word = in.nextLine();
+          //System.out.println(word);
+          wordsToAdd.add(word);
+          //System.out.println(wordsToAdd);
+          //System.out.println(wordsToAdd.size());
+        }
+        //System.out.println(wordsToAdd);
+
+        addAllWords();
+
+    }catch(FileNotFoundException e){
+      System.out.println("File not found: " + fileName);
+      //e.printStackTrace();
+      System.exit(1);
+      }
+
+    }
 
     public WordSearch( int rows, int cols, String fileName) {
       randgen = new Random();
-      ArrayList<String>wordsToAdd = new ArrayList<String>();
-      ArrayList<String>wordsAdded = new ArrayList<String>();
       data = new char[rows][cols];
       clear();
+      wordsToAdd = new ArrayList<>();
+      wordsAdded = new ArrayList<>();
+
       try{
         File f = new File(fileName);//can combine
         Scanner in = new Scanner(f);//into one line
