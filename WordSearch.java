@@ -30,7 +30,7 @@ public class WordSearch{
         while ( in.hasNext()) {
           String word = in.nextLine();
           //System.out.println(word);
-          wordsToAdd.add(word);
+          wordsToAdd.add(word.toUpperCase());
           //System.out.println(wordsToAdd);
           //System.out.println(wordsToAdd.size());
         }
@@ -59,7 +59,7 @@ public class WordSearch{
         while ( in.hasNext()) {
           String word = in.nextLine();
           //System.out.println(word);
-          wordsToAdd.add(word);
+          wordsToAdd.add(word.toUpperCase());
           //System.out.println(wordsToAdd);
           //System.out.println(wordsToAdd.size());
         }
