@@ -21,23 +21,20 @@ public class WordSearch{
     public WordSearch( int rows, int cols, String fileName) {
       randgen = new Random();
       ArrayList<String>wordsToAdd = new ArrayList<String>();
+      ArrayList<String>wordsAdded = new ArrayList<String>();
       data = new char[rows][cols];
+      clear();
       try{
         File f = new File(fileName);//can combine
         Scanner in = new Scanner(f);//into one line
         while ( in.hasNext()) {
-          wordsToAdd.add( in.next());
+          String word = in.nextLine();
+          //System.out.println(word);
+          wordsToAdd.add(word);
+          //System.out.println(wordsToAdd);
+          //System.out.println(wordsToAdd.size());
         }
-        for ( int i = 0; i < wordsToAdd.size(); i++) {
-          String word = wordsToAdd.get( randgen.nextInt() % wordsToAdd.size());
-          for ( int x = 0; x < 100; x++) {
-            if ( addWord( word, randgen.nextInt() % rows , randgen.nextInt() % cols, randgen.nextInt() % 3 - 1, randgen.nextInt() % 3 - 1)) {
-              x = 1000;
-              wordsAdded.add(word);
-              wordsToAdd.remove(word);
-            }
-          }
-        }
+        //addAllWords();
 
     }catch(FileNotFoundException e){
       System.out.println("File not found: " + fileName);
@@ -74,9 +71,9 @@ public class WordSearch{
           output += "| \n";
         }
       }
-      for ( int i= 0; i < wordsAdded.size(); i++) {
-        output += wordsAdded.get(i);
-      }
+      //for ( int i= 0; i < wordsAdded.size(); i++) {
+        //output += wordsAdded.get(i);
+      //}
       return output;
     }
 
@@ -165,22 +162,44 @@ public class WordSearch{
         *        OR there are overlapping letters that do not match
         */
        public boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
-         if ( rowIncrement == 0 && colIncrement == 0 )
+         if( rowIncrement == 0 && colIncrement == 0)
          return false;
-
-         if ( ( data.length < row + word.length()) || ( data[row].length < col + word.length() ))
-          return false;
+         if( rowIncrement == 1 && data.length < row + word.length())
+         return false;
+         if ( colIncrement == 1 && data[row].length < col + word.length())
+         return false;
+         if ( rowIncrement == -1 && row + 1 < word.length() )
+         return false;
+         if ( colIncrement == -1 && col + 1 < word.length() )
+         return false;
          for ( int i = 0 ; i < word.length(); i++) {
-           if ( !(data[row + i * rowIncrement][col+ i * colIncrement] == '_') && !(word.charAt(i) == data[row + i * rowIncrement][col+ i * colIncrement]) )
+           if ( !(data[row + i * rowIncrement][col + i * colIncrement] == '_') && !(word.charAt(i) == data[row + i * rowIncrement][col + i * colIncrement]) )
            return false;
          }
          for ( int i = 0; i < word.length(); i++) {
-           data[row + rowIncrement * i][col + colIncrement * i] = word.charAt(i);
+           data[row + i * rowIncrement][col + i * colIncrement] = word.charAt(i);
          }
-        return true;
-      }
+         return true;
+       }
       /*[rowIncrement,colIncrement] examples:
        *[-1,1] would add up to the right because (row -1 each time, col + 1 each time)
        *[1,0] would add to the right because (row+1), with no col change
        */
+
+       public void addAllWords() {
+        System.out.print( wordsToAdd );
+        //System.out.println( wordsToAdd.size() );
+        while( wordsToAdd.size() > 0) {
+          System.out.println(wordsToAdd);
+          System.out.println(wordsToAdd.size());
+          String word = wordsToAdd.get( Math.abs( randgen.nextInt() % wordsToAdd.size() ) );
+          for ( int attemps = 0; attemps < 25; attemps++) {
+            if ( addWord(word, Math.abs(randgen.nextInt()) % data.length, Math.abs(randgen.nextInt()) % data[0].length, randgen.nextInt() & 2, randgen.nextInt() % 2 )){
+              attemps = 100;
+              wordsToAdd.remove(word);
+              wordsAdded.add(word);
+            }
+          }
+        }
+       }
 }
