@@ -1,2 +1,3 @@
 javac *.java
-java driving
+java driver
+java WordSearch
