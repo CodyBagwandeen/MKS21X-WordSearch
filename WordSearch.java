@@ -35,7 +35,7 @@ public class WordSearch{
           //System.out.println(wordsToAdd.size());
         }
         System.out.println(wordsToAdd);
-        System.out.println(wordsToAdd.size());
+
         //addAllWords();
 
     }catch(FileNotFoundException e){
@@ -190,13 +190,15 @@ public class WordSearch{
 
        public void addAllWords() {
         System.out.print( wordsToAdd );
-        //System.out.println( wordsToAdd.size() );
+
         while( wordsToAdd.size() > 0) {
-          System.out.println(wordsToAdd);
-          System.out.println(wordsToAdd.size());
+          //System.out.println(wordsToAdd);
+          //System.out.println(wordsToAdd.size());
           String word = wordsToAdd.get( Math.abs( randgen.nextInt() % wordsToAdd.size() ) );
           for ( int attemps = 0; attemps < 25; attemps++) {
-            if ( addWord(word, Math.abs(randgen.nextInt()) % data.length, Math.abs(randgen.nextInt()) % data[0].length, randgen.nextInt() & 2, randgen.nextInt() % 2 )){
+            int rows = Math.abs(randgen.nextInt() % data.length);
+            int cols = Math.abs(randgen.nextInt() % data[0].length);
+            if ( addWord(word, rows, cols, randgen.nextInt() % 2, randgen.nextInt() % 2 )){
               attemps = 25;
               wordsToAdd.remove(word);
               wordsAdded.add(word);
