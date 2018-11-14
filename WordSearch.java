@@ -255,7 +255,7 @@ public class WordSearch{
       }
       public static void main( String[] args) {
         if ( args.length < 3)
-        System.out.println("Bat formatting; java Driver [rows cols filename [randomSeed [key]]], square brackets denotes optional");
+        System.out.println("Bad formatting; java Driver [rows cols filename [randomSeed [key]]], square brackets denotes optional");
         if ( args.length == 3) {
           try {
             int rows = Integer.parseInt( args[0]);
