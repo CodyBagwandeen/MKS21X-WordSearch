@@ -86,7 +86,7 @@ public class WordSearch{
     private void clear(){
       for ( int i=0; i< data.length; i++) {
         for ( int x=0; x< data[i].length; x++) {
-          data[i][x] = '_' ;
+          data[i][x] = ' ' ;
         }
       }
     }
@@ -101,10 +101,12 @@ public class WordSearch{
         for ( int x=-1; x < data[i].length + 1; x++) {
           if ( x == -1)
           output += "|";
-          if ( x != -1 && x < data[i].length)
+          if ( x != -1 && x < data[i].length -1)
           output += data[i][x] + " ";
+          if ( x == data[i].length -1)
+          output += data[i][x];
           if ( x == data[i].length)
-          output += "| \n";
+          output += "|" +"\n";
         }
       }
       output += "Words: ";
@@ -130,7 +132,7 @@ public class WordSearch{
       if ( data[row].length < word.length() + col )
       return false;
       for ( int i = 0; i < word.length(); i++){
-        if ( !( data[row][ col + i] == '_') && !( word.charAt(i) == data[row][col+i]))
+        if ( !( data[row][ col + i] == ' ') && !( word.charAt(i) == data[row][col+i]))
         return false;
       }
       for ( int i = 0; i < word.length(); i++) {
@@ -154,7 +156,7 @@ public class WordSearch{
       if ( data.length < word.length() + row)
       return false;
       for ( int i = 0; i < word.length(); i++) {
-        if ( !(data[row + i][col] == '_') && !(word.charAt(i) == data[row +i][col]) )
+        if ( !(data[row + i][col] == ' ') && !(word.charAt(i) == data[row +i][col]) )
         return false;
       }
       for ( int i = 0; i < word.length(); i++) {
@@ -177,7 +179,7 @@ public class WordSearch{
      if ( (data.length < word.length() + row) || (data[row].length < word.length() + col))
      return false;
      for ( int i = 0 ; i < word.length(); i++) {
-       if ( !(data[row + i][col+i] == '_') && !(word.charAt(i) == data[row +i][col+i]) )
+       if ( !(data[row + i][col+i] == ' ') && !(word.charAt(i) == data[row +i][col+i]) )
        return false;
      }
      for ( int i = 0; i < word.length(); i++) {
@@ -210,7 +212,7 @@ public class WordSearch{
          if ( colIncrement == -1 && col + 1 < word.length() )
          return false;
          for ( int i = 0 ; i < word.length(); i++) {
-           if ( !(data[row + i * rowIncrement][col + i * colIncrement] == '_') && !(word.charAt(i) == data[row + i * rowIncrement][col + i * colIncrement]) )
+           if ( !(data[row + i * rowIncrement][col + i * colIncrement] == ' ') && !(word.charAt(i) == data[row + i * rowIncrement][col + i * colIncrement]) )
            return false;
          }
          for ( int i = 0; i < word.length(); i++) {
@@ -246,23 +248,23 @@ public class WordSearch{
       public void fill() {
         for ( int rows = 0; rows < data.length; rows++) {
           for ( int cols = 0; cols < data[rows].length; cols++) {
-            if( data[rows][cols] == '_') {
+            if( data[rows][cols] == ' ') {
               data[rows][cols] = (char)( Math.abs(randgen.nextInt()) % 26 + 65);
             }
           }
         }
       }
       public static void main( String[] args) {
-        if ( args.length == 0) {
-          WordSearch Wse = new WordSearch( 6, 6, "words.txt");
-          System.out.println( Wse);
-        }
-        if ( args.length > 0 && args.length < 3)
+        if ( args.length < 3)
         System.out.println("Bat formatting; java Driver [rows cols filename [randomSeed [key]]], square brackets denotes optional");
         if ( args.length == 3) {
           try {
             int rows = Integer.parseInt( args[0]);
             int cols = Integer.parseInt( args[1]);
+            if (!( rows > 0 ) || !(cols > 0)) {
+              System.out.println( "rows and cols must be greater than 0");
+              System.exit(1);
+          }
             String filename = args[2];
             WordSearch WSe = new WordSearch( rows, cols, filename);
             System.out.println( WSe);
@@ -274,6 +276,10 @@ public class WordSearch{
           try{
             int rows = Integer.parseInt( args[0]);
             int cols = Integer.parseInt( args[1]);
+            if (!( rows > 0 ) || !(cols > 0)) {
+              System.out.println( "rows and cols must be greater than 0");
+              System.exit(1);
+          }
             String filename = args[2];
             int seed = Integer.parseInt( args[3]);
             WordSearch WSe = new WordSearch( rows, cols, filename, seed);
@@ -287,6 +293,10 @@ public class WordSearch{
           try {
             int rows = Integer.parseInt( args[0]);
             int cols = Integer.parseInt( args[1]);
+            if (!( rows > 0 ) || !(cols > 0)) {
+              System.out.println( "rows and cols must be greater than 0");
+              System.exit(1);
+          }
             String filename = args[2];
             int seed = Integer.parseInt( args[3]);
             WordSearch WSe = new WordSearch( rows, cols, filename, seed);
