@@ -7,7 +7,7 @@ public class WordSearch{
     private Random randgen;
     private ArrayList<String>wordsToAdd;
     private ArrayList<String>wordsAdded;
-
+    
     /**Initialize the grid to the size specified
      *and fill all of the positions with '_'
      *@param row is the starting height of the WordSearch
