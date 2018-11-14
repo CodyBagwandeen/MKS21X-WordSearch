@@ -48,8 +48,7 @@ public class WordSearch{
     }
 
     public WordSearch( int rows, int cols, String fileName) {
-      Random seeded = new Random() ;
-      int seed = seeded.nextInt() % 100000;
+      int seed = (int)(Math.random() * 100000);
       randgen = new Random(seed);
       data = new char[rows][cols];
       clear();
