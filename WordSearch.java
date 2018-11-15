@@ -281,6 +281,10 @@ public class WordSearch{
           }
             String filename = args[2];
             int seed = Integer.parseInt( args[3]);
+            if ( !( seed >= 0 && seed <= 10000)) {
+              System.out.println( "seed musts be 0 to 10000 inclusive");
+              System.exit(1);
+            }
             WordSearch WSe = new WordSearch( rows, cols, filename, seed);
             WSe.fill();
             System.out.println( WSe);
@@ -298,6 +302,10 @@ public class WordSearch{
           }
             String filename = args[2];
             int seed = Integer.parseInt( args[3]);
+            if ( !( seed >= 0 && seed <= 10000)) {
+              System.out.println( "seed musts be 0 to 10000 inclusive");
+              System.exit(1);
+            }
             WordSearch WSe = new WordSearch( rows, cols, filename, seed);
             if (!( args[4].equals("key")))
             WSe.fill();
