@@ -29,7 +29,7 @@ public class WordSearch{
         File f = new File(fileName);//can combine
         Scanner in = new Scanner(f);//into one line
         while ( in.hasNext()) {
-          String word = in.nextLine();
+          String word = in.next();
           //System.out.println(word);
           wordsToAdd.add(word.toUpperCase());
           //System.out.println(wordsToAdd);
@@ -59,7 +59,7 @@ public class WordSearch{
         File f = new File(fileName);//can combine
         Scanner in = new Scanner(f);//into one line
         while ( in.hasNext()) {
-          String word = in.nextLine();
+          String word = in.next();
           //System.out.println(word);
           wordsToAdd.add(word.toUpperCase());
           //System.out.println(wordsToAdd);
