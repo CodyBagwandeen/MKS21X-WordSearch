@@ -7,7 +7,7 @@ public class WordSearch{
     private Random randgen;
     private ArrayList<String>wordsToAdd;
     private ArrayList<String>wordsAdded;
-    
+
     /**Initialize the grid to the size specified
      *and fill all of the positions with '_'
      *@param row is the starting height of the WordSearch
@@ -48,7 +48,7 @@ public class WordSearch{
     }
 
     public WordSearch( int rows, int cols, String fileName) {
-      int seed = (int)(Math.random() * 100000);
+      int seed = (int)(Math.random() * 10000);
       randgen = new Random(seed);
       data = new char[rows][cols];
       clear();
@@ -268,7 +268,7 @@ public class WordSearch{
             WordSearch WSe = new WordSearch( rows, cols, filename);
             System.out.println( WSe);
           } catch( NumberFormatException e) {
-            System.out.println("Parameters rows and cols must be numbers");
+            System.out.println("Parameters rows and cols must be integers");
           }
         }
         if ( args.length == 4) {
@@ -285,10 +285,10 @@ public class WordSearch{
             WSe.fill();
             System.out.println( WSe);
           } catch( NumberFormatException e) {
-            System.out.println("Parameters rows, cols, and seed must be numbers");
+            System.out.println("Parameters rows, cols, and seed must be integers");
           }
         }
-        if ( args.length == 5) {
+        if ( args.length >= 5) {
           try {
             int rows = Integer.parseInt( args[0]);
             int cols = Integer.parseInt( args[1]);
@@ -303,7 +303,7 @@ public class WordSearch{
             WSe.fill();
             System.out.println( WSe);
             }catch( NumberFormatException e) {
-              System.out.println("Parameters rows,cols,and seed must be numbers");
+              System.out.println("Parameters rows,cols,and seed must be integers");
             }
           }
         }
