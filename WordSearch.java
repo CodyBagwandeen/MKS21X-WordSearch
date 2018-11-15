@@ -18,7 +18,8 @@ public class WordSearch{
       clear();
     }
     public WordSearch( int rows, int cols, String fileName,int randSeed) {
-      randgen = new Random(randSeed);
+      seed = randSeed;
+      randgen = new Random(seed);
       data = new char[rows][cols];
       clear();
       wordsToAdd = new ArrayList<>();
@@ -37,7 +38,6 @@ public class WordSearch{
         //System.out.println(wordsToAdd);
 
         addAllWords();
-        System.out.println("This is your seed: " + randSeed);
 
     }catch(FileNotFoundException e){
       System.out.println("File not found: " + fileName);
@@ -48,7 +48,7 @@ public class WordSearch{
     }
 
     public WordSearch( int rows, int cols, String fileName) {
-      int seed = (int)(Math.random() * 10000);
+      seed = (int)(Math.random() * 10000);
       randgen = new Random(seed);
       data = new char[rows][cols];
       clear();
@@ -69,7 +69,6 @@ public class WordSearch{
 
         addAllWords();
         fill();
-        System.out.println("This is your seed: " + seed);
 
     }catch(FileNotFoundException e){
       System.out.println("File not found: " + fileName);
@@ -112,6 +111,7 @@ public class WordSearch{
     for ( int i= 0; i < wordsAdded.size(); i++) {
         output += wordsAdded.get(i) + " ";
       }
+      output += "(" + "seed: "+ seed + ")" ;
       return output;
     }
 
@@ -255,7 +255,7 @@ public class WordSearch{
       }
       public static void main( String[] args) {
         if ( args.length < 3)
-        System.out.println("Bad formatting; java Driver [rows cols filename [randomSeed [key]]], square brackets denotes optional");
+        System.out.println("Bad formatting; java WordSearch [rows cols filename [randomSeed [key]]], square brackets denotes optional");
         if ( args.length == 3) {
           try {
             int rows = Integer.parseInt( args[0]);
