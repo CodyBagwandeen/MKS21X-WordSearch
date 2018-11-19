@@ -471,7 +471,7 @@ Leafeon
 Glaceon
 Gliscor
 Mamoswine
-Porygon-Z
+PorygonZ
 Gallade
 Probopass
 Dusknoir
@@ -666,7 +666,7 @@ Spewpa
 Vivillon
 Litleo
 Pyroar
-Flabébé
+Flabebe
 Floette
 Florges
 Skiddo
